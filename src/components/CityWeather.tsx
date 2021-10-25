@@ -141,10 +141,7 @@ class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
             return faSnowflake;
         } else if (weatherStatus === 'Tornado') {
             return faWind;
-        } 
-        //else {
-        //     return faCloudSun;
-        // }
+        }
     }
 
     convertToFloat = (val: string) => {
