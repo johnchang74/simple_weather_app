@@ -1,0 +1,7 @@
+{
+    "watchFolder": "src/assets/styles/",
+    "outputFolder": "src/assets/styles/",
+    "sourceMap": true,
+    "runOnce": false,
+    "enableJs": true
+  }
