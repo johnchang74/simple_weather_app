@@ -4668,8 +4668,24 @@
   color: transparent;
   background-image: linear-gradient(to bottom left, #cef2e5 65%, grey);
 }
+.current-status-mobile {
+  margin-left: 110px;
+  margin-top: 15px;
+  stroke: black;
+  stroke-width: 10;
+  color: transparent;
+  background-image: linear-gradient(to bottom left, #cef2e5 65%, grey);
+}
 .current-cloud-status {
   margin-left: 150px;
+  margin-top: 15px;
+  stroke: black;
+  stroke-width: 10;
+  color: transparent;
+  background-image: linear-gradient(to bottom left, #cef2e5 65%, grey);
+}
+.current-cloud-status-mobile {
+  margin-left: 100px;
   margin-top: 15px;
   stroke: black;
   stroke-width: 10;
@@ -4691,17 +4707,35 @@
   margin-right: -10px;
   margin-bottom: -20px;
 }
+.current-temperature-mobile {
+  font-size: 2.3em;
+  margin-left: 20px;
+  margin-right: -10px;
+  margin-bottom: -20px;
+}
 .forecast-double-temperature {
   position: relative;
   font-size: 1.2em;
   margin-bottom: 10px;
   padding-left: 90%;
 }
+.forecast-double-temperature-mobile {
+  position: relative;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  padding-left: 70%;
+}
 .forecast-single-temperature {
   position: relative;
   font-size: 1.2em;
   margin-bottom: 10px;
   padding-left: 120%;
+}
+.forecast-single-temperature-mobile {
+  position: relative;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  padding-left: 140%;
 }
 .celsius {
   font-size: 0.7em;
@@ -4714,6 +4748,10 @@
   margin-bottom: 10%;
   margin-left: 85px;
 }
+.weather-desc-mobile {
+  margin-bottom: 10%;
+  margin-left: 25px;
+}
 .current-celsius {
   content: url("../images/svgs/regular/square.svg");
   width: 15px;
@@ -4721,6 +4759,14 @@
   border-radius: 3.5px;
   margin-top: 18px;
   margin-left: -155px;
+}
+.current-celsius-mobile {
+  content: url("../images/svgs/regular/square.svg");
+  width: 15px;
+  border: 4px solid black;
+  border-radius: 3.5px;
+  margin-top: 18px;
+  margin-left: -105px;
 }
 .current-single-celsius {
   content: url("../images/svgs/regular/square.svg");
@@ -4730,6 +4776,14 @@
   margin-top: 18px;
   margin-left: -190px;
 }
+.current-single-celsius-mobile {
+  content: url("../images/svgs/regular/square.svg");
+  width: 15px;
+  border: 4px solid black;
+  border-radius: 3.5px;
+  margin-top: 18px;
+  margin-left: -140px;
+}
 .forecast-celsius {
   content: url("../images/svgs/regular/square.svg");
   width: 7px;
@@ -4737,6 +4791,15 @@
   border-radius: 2.5px;
   margin-top: 5px;
   margin-right: 80%;
+  margin-bottom: 7px;
+}
+.forecast-celsius-mobile {
+  content: url("../images/svgs/regular/square.svg");
+  width: 7px;
+  border: 2px solid black;
+  border-radius: 2.5px;
+  margin-top: 5px;
+  margin-right: 20%;
   margin-bottom: 7px;
 }
 /*# sourceMappingURL=styles.css.map */

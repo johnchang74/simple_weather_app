@@ -17,6 +17,7 @@ interface CityWeatherStatus {
     weatherAfterThreeDay: CityWeatherObject;
     weatherAfterFourDay: CityWeatherObject;
     showError: boolean;
+    screenWidth: number;
 }
 
 class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
@@ -29,11 +30,14 @@ class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
             weatherAfterTwoDay: {} as CityWeatherObject,
             weatherAfterThreeDay: {} as CityWeatherObject,
             weatherAfterFourDay: {} as CityWeatherObject,
-            showError: false
+            showError: false,
+            screenWidth: 0 as number
         };
     }
 
     componentDidMount() {
+        let widthValue = document.documentElement.clientWidth;
+        this.setState({ screenWidth: widthValue });
         this.clickCity(this.state.selectedCity);
     }
 
@@ -189,39 +193,74 @@ class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
                                                     {
                                                         this.state.weatherToday.weatherStatus === 'Clouds'
                                                         ?
-                                                            <FontAwesomeIcon 
-                                                                icon={this.getWeatherIcon(this.state.weatherToday.weatherStatus)}
-                                                                color="#cef2e5" 
-                                                                size="3x"
-                                                                border={false}
-                                                                className="current-cloud-status"
-                                                            />
+                                                            this.state.screenWidth < 400
+                                                            ?
+                                                                <FontAwesomeIcon 
+                                                                    icon={this.getWeatherIcon(this.state.weatherToday.weatherStatus)}
+                                                                    color="#cef2e5" 
+                                                                    size="3x"
+                                                                    border={false}
+                                                                    className="current-cloud-status-mobile"
+                                                                />
+                                                            :
+                                                                <FontAwesomeIcon 
+                                                                    icon={this.getWeatherIcon(this.state.weatherToday.weatherStatus)}
+                                                                    color="#cef2e5" 
+                                                                    size="3x"
+                                                                    border={false}
+                                                                    className="current-cloud-status"
+                                                                />
                                                         :
-                                                            <FontAwesomeIcon 
-                                                                icon={this.getWeatherIcon(this.state.weatherToday.weatherStatus)}
-                                                                color="#cef2e5" 
-                                                                size="3x"
-                                                                border={false}
-                                                                className="current-status"
-                                                            />
+                                                            this.state.screenWidth < 400
+                                                            ?
+                                                                <FontAwesomeIcon 
+                                                                    icon={this.getWeatherIcon(this.state.weatherToday.weatherStatus)}
+                                                                    color="#cef2e5" 
+                                                                    size="3x"
+                                                                    border={false}
+                                                                    className="current-status-mobile"
+                                                                />
+                                                            :
+                                                                <FontAwesomeIcon 
+                                                                    icon={this.getWeatherIcon(this.state.weatherToday.weatherStatus)}
+                                                                    color="#cef2e5" 
+                                                                    size="3x"
+                                                                    border={false}
+                                                                    className="current-status"
+                                                                />
                                                     }
-                                                    
                                                 </Col>
                                                 <Col>
-                                                    <div className="current-temperature">{this.state.weatherToday.temperature}</div>
-                                                    <div className="weather-desc">{this.state.weatherToday.weatherStatus}</div>
+                                                    <div className={ this.state.screenWidth < 400 
+                                                                     ? "current-temperature-mobile"
+                                                                     : "current-temperature"}>
+                                                        {this.state.weatherToday.temperature}
+                                                    </div>
+                                                    <div className={ this.state.screenWidth < 400
+                                                                     ? "weather-desc-mobile"
+                                                                     : "weather-desc"}>
+                                                        {this.state.weatherToday.weatherStatus}
+                                                    </div>
                                                 </Col>
                                                 <Col>
                                                     {
                                                         this.state.weatherToday.temperature !== undefined &&
                                                         this.state.weatherToday.temperature.length === 1
                                                         ?
-                                                            <i className="current-single-celsius" aria-hidden="true"></i>
+                                                            this.state.screenWidth < 400
+                                                            ?
+                                                                <i className="current-single-celsius-mobile" aria-hidden="true"></i>
+                                                            :
+                                                                <i className="current-single-celsius" aria-hidden="true"></i>
                                                         :
                                                             this.state.weatherToday.temperature !== undefined &&
                                                             this.state.weatherToday.temperature.length === 2
                                                             ?
-                                                                <i className="current-celsius" aria-hidden="true"></i>
+                                                                this.state.screenWidth < 400
+                                                                ?
+                                                                    <i className="current-celsius-mobile" aria-hidden="true"></i>
+                                                                :
+                                                                    <i className="current-celsius" aria-hidden="true"></i>
                                                             :
                                                                 ''
                                                     }
@@ -250,18 +289,26 @@ class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
                                                         this.state.weatherAfterOneDay.temperature !== undefined &&
                                                         this.state.weatherAfterOneDay.temperature.length === 1
                                                         ?   
-                                                            <div className="forecast-single-temperature">{this.state.weatherAfterOneDay.temperature}</div>
+                                                            this.state.screenWidth < 400
+                                                            ?
+                                                                <div className="forecast-single-temperature-mobile">{this.state.weatherAfterOneDay.temperature}</div>
+                                                            :
+                                                                <div className="forecast-single-temperature">{this.state.weatherAfterOneDay.temperature}</div>
                                                         :
                                                             this.state.weatherAfterOneDay.temperature !== undefined &&
                                                             this.state.weatherAfterOneDay.temperature.length === 2
                                                             ?
-                                                                <div className="forecast-double-temperature">{this.state.weatherAfterOneDay.temperature}</div>
+                                                                this.state.screenWidth < 400
+                                                                ?
+                                                                    <div className="forecast-double-temperature-mobile">{this.state.weatherAfterOneDay.temperature}</div>
+                                                                :
+                                                                    <div className="forecast-double-temperature">{this.state.weatherAfterOneDay.temperature}</div>
                                                             :
                                                                 ''
                                                     }
                                                 </Col>
                                                 <Col>
-                                                    <i className="forecast-celsius" aria-hidden="true"></i>
+                                                    <i className={ this.state.screenWidth < 400 ? "forecast-celsius-mobile" : "forecast-celsius"} aria-hidden="true"></i>
                                                 </Col>
                                             </Row>
                                         </td>
@@ -284,18 +331,26 @@ class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
                                                         this.state.weatherAfterTwoDay.temperature !== undefined &&
                                                         this.state.weatherAfterTwoDay.temperature.length === 1
                                                         ?   
-                                                            <div className="forecast-single-temperature">{this.state.weatherAfterTwoDay.temperature}</div>
+                                                            this.state.screenWidth < 400
+                                                            ?
+                                                                <div className="forecast-single-temperature-mobile">{this.state.weatherAfterTwoDay.temperature}</div>
+                                                            :
+                                                                <div className="forecast-single-temperature">{this.state.weatherAfterTwoDay.temperature}</div>
                                                         :
                                                             this.state.weatherAfterTwoDay.temperature !== undefined &&
                                                             this.state.weatherAfterTwoDay.temperature.length === 2
                                                             ?
-                                                                <div className="forecast-double-temperature">{this.state.weatherAfterTwoDay.temperature}</div>
+                                                                this.state.screenWidth < 400
+                                                                ?
+                                                                    <div className="forecast-double-temperature-mobile">{this.state.weatherAfterTwoDay.temperature}</div>
+                                                                :
+                                                                    <div className="forecast-double-temperature">{this.state.weatherAfterTwoDay.temperature}</div>
                                                             :
                                                                 ''
                                                     }
                                                 </Col>
                                                 <Col>
-                                                    <i className="forecast-celsius" aria-hidden="true"></i>
+                                                    <i className={ this.state.screenWidth < 400 ? "forecast-celsius-mobile" : "forecast-celsius"} aria-hidden="true"></i>
                                                 </Col>
                                             </Row>
                                         </td>
@@ -318,18 +373,26 @@ class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
                                                         this.state.weatherAfterThreeDay.temperature !== undefined &&
                                                         this.state.weatherAfterThreeDay.temperature.length === 1
                                                         ?   
-                                                            <div className="forecast-single-temperature">{this.state.weatherAfterThreeDay.temperature}</div>
+                                                            this.state.screenWidth < 400
+                                                            ?
+                                                                <div className="forecast-single-temperature-mobile">{this.state.weatherAfterThreeDay.temperature}</div>
+                                                            :
+                                                                <div className="forecast-single-temperature">{this.state.weatherAfterThreeDay.temperature}</div>
                                                         :
                                                             this.state.weatherAfterThreeDay.temperature !== undefined &&
                                                             this.state.weatherAfterThreeDay.temperature.length === 2
                                                             ?
-                                                                <div className="forecast-double-temperature">{this.state.weatherAfterThreeDay.temperature}</div>
+                                                                this.state.screenWidth < 400
+                                                                ?
+                                                                    <div className="forecast-double-temperature-mobile">{this.state.weatherAfterThreeDay.temperature}</div>
+                                                                :
+                                                                    <div className="forecast-double-temperature">{this.state.weatherAfterThreeDay.temperature}</div>
                                                             :
                                                                 ''
                                                     }
                                                 </Col>
                                                 <Col>
-                                                    <i className="forecast-celsius" aria-hidden="true"></i>
+                                                    <i className={ this.state.screenWidth < 400 ? "forecast-celsius-mobile" : "forecast-celsius"} aria-hidden="true"></i>
                                                 </Col>
                                             </Row>
                                         </td>
@@ -352,18 +415,26 @@ class CityWeather extends Component<CityWeatherObject, CityWeatherStatus> {
                                                         this.state.weatherAfterFourDay.temperature !== undefined &&
                                                         this.state.weatherAfterFourDay.temperature.length === 1
                                                         ?   
-                                                            <div className="forecast-single-temperature">{this.state.weatherAfterFourDay.temperature}</div>
+                                                            this.state.screenWidth < 400
+                                                            ?
+                                                                <div className="forecast-single-temperature-mobile">{this.state.weatherAfterFourDay.temperature}</div>
+                                                            :
+                                                                <div className="forecast-single-temperature">{this.state.weatherAfterFourDay.temperature}</div>
                                                         :
                                                             this.state.weatherAfterFourDay.temperature !== undefined &&
                                                             this.state.weatherAfterFourDay.temperature.length === 2
                                                             ?
-                                                                <div className="forecast-double-temperature">{this.state.weatherAfterFourDay.temperature}</div>
+                                                                this.state.screenWidth < 400
+                                                                ?
+                                                                    <div className="forecast-double-temperature-mobile">{this.state.weatherAfterFourDay.temperature}</div>
+                                                                :
+                                                                    <div className="forecast-double-temperature">{this.state.weatherAfterFourDay.temperature}</div>
                                                             :
                                                                 ''
                                                     }
                                                 </Col>
                                                 <Col>
-                                                    <i className="forecast-celsius" aria-hidden="true"></i>
+                                                    <i className={ this.state.screenWidth < 400 ? "forecast-celsius-mobile" : "forecast-celsius"} aria-hidden="true"></i>
                                                 </Col>
                                             </Row>                                     
                                         </td>

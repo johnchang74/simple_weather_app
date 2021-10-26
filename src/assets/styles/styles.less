@@ -106,8 +106,26 @@
     background-image: linear-gradient(to bottom left, #cef2e5 65%, grey);
 }
 
+.current-status-mobile {
+    margin-left: @currentWeatherStatusMarginLeft - 55px;
+    margin-top: @weatherStatusMarginTop;
+    stroke: black;
+    stroke-width: 10;
+    color: transparent;
+    background-image: linear-gradient(to bottom left, #cef2e5 65%, grey);
+}
+
 .current-cloud-status {
     margin-left: @currentWeatherStatusMarginLeft - 15px;
+    margin-top: @weatherStatusMarginTop;
+    stroke: black;
+    stroke-width: 10;
+    color: transparent;
+    background-image: linear-gradient(to bottom left, #cef2e5 65%, grey);
+}
+
+.current-cloud-status-mobile {
+    margin-left: @currentWeatherStatusMarginLeft - 65px;
     margin-top: @weatherStatusMarginTop;
     stroke: black;
     stroke-width: 10;
@@ -125,9 +143,17 @@
     background-image: linear-gradient(to bottom left, #cef2e5 60%, grey);
 }
 
+@currentTempMarginLeft: 80px;
 .current-temperature {
     font-size: 2.3em;
-    margin-left: 80px;
+    margin-left: @currentTempMarginLeft;
+    margin-right: -10px;
+    margin-bottom: -20px;
+}
+
+.current-temperature-mobile {
+    font-size: 2.3em;
+    margin-left: @currentTempMarginLeft - 60px;
     margin-right: -10px;
     margin-bottom: -20px;
 }
@@ -143,11 +169,25 @@
     padding-left: @forecastDoublePaddingLeft;
 }
 
+.forecast-double-temperature-mobile {
+    position: relative;
+    font-size: @forecastTempFontSize;
+    margin-bottom: @forecastMarginBottom;
+    padding-left: @forecastDoublePaddingLeft - 20%;
+}
+
 .forecast-single-temperature {
     position: relative;
     font-size: @forecastTempFontSize;
     margin-bottom: @forecastMarginBottom;
     padding-left: @forecastSinglePaddingLeft;
+}
+
+.forecast-single-temperature-mobile {
+    position: relative;
+    font-size: @forecastTempFontSize;
+    margin-bottom: @forecastMarginBottom;
+    padding-left: @forecastSinglePaddingLeft + 20%;
 }
 
 .celsius {
@@ -159,9 +199,15 @@
     margin-left: -30px;
 }
 
+@weatherDescMarginLeft: 85px;
 .weather-desc {
     margin-bottom: 10%;
-    margin-left: 85px;
+    margin-left: @weatherDescMarginLeft;
+}
+
+.weather-desc-mobile {
+    margin-bottom: 10%;
+    margin-left: @weatherDescMarginLeft - 60px;
 }
 
 @currentCelsiusMarginTop: 18px;
@@ -175,6 +221,15 @@
     margin-left: @currentCelsiusMarginLeft;
 }
 
+.current-celsius-mobile {
+    content: url("../images/svgs/regular/square.svg");
+    width: 15px;
+    border: 4px solid black;
+    border-radius: 3.5px;
+    margin-top: @currentCelsiusMarginTop;
+    margin-left: @currentCelsiusMarginLeft + 50px;
+}
+
 .current-single-celsius {
     content: url("../images/svgs/regular/square.svg");
     width: 15px;
@@ -184,12 +239,32 @@
     margin-left: @currentCelsiusMarginLeft - 35px;
 }
 
+.current-single-celsius-mobile {
+    content: url("../images/svgs/regular/square.svg");
+    width: 15px;
+    border: 4px solid black;
+    border-radius: 3.5px;
+    margin-top: @currentCelsiusMarginTop;
+    margin-left: @currentCelsiusMarginLeft + 15px;
+}
+
+@forecastCelsiusMarginRight: 80%;
 .forecast-celsius {
     content: url("../images/svgs/regular/square.svg");
     width: 7px;
     border: 3px solid black;
     border-radius: 2.5px;
     margin-top: 5px;
-    margin-right: 80%;  
+    margin-right: @forecastCelsiusMarginRight;  
+    margin-bottom: 7px;
+}
+
+.forecast-celsius-mobile {
+    content: url("../images/svgs/regular/square.svg");
+    width: 7px;
+    border: 2px solid black;
+    border-radius: 2.5px;
+    margin-top: 5px;
+    margin-right: @forecastCelsiusMarginRight - 60%;  
     margin-bottom: 7px;
 }
